@@ -304,6 +304,8 @@ html
               tr
                 td.service #{item.itemName}
                   span #{item.description}
+                  if item.notes
+                    span Notes: #{item.notes}
                 td.qty #{item.quantity}  
                 td.unit  #{moneyFormatter({amount:item.price})}
                 td.total #{moneyFormatter({amount:item.total})}
@@ -320,7 +322,8 @@ html
       .col.col-24
           .space     
       footer.footer-invoice
-        //- | Invoice was created on a computer and is valid without the signature and seal.
+        if model.notes
+          p #{model.notes}
           
 
    
