@@ -1,0 +1,759 @@
+{
+  "info": {
+    "_postman_id": "c8091187-8221-4063-8093-396c8442bcc6",
+    "name": "TASK",
+    "description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32504088",
+    "_collection_link": "https://akhil0-7657.postman.co/workspace/TASK-~732b4e36-b170-4c68-bc4a-d1a7bbedfb9f/collection/32504088-c8091187-8221-4063-8093-396c8442bcc6?action=share&source=collection_link&creator=32504088"
+  },
+  "item": [
+    {
+      "name": "Query",
+      "item": [
+        {
+          "name": "Retrieve all queries (paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/api/query/list?page=1&limit=10",
+              "host": ["{{baseURL}}"],
+              "path": ["api", "query", "list"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Retrieve all queries (paginated)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{authToken}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}/api/query/list?page=1&limit=10",
+                  "host": ["{{baseURL}}"],
+                  "path": ["api", "query", "list"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5a5-EphNNdIjdcFHlDjIfi5ln8CFbWM\""
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 13:03:56 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": [\n        {\n            \"_id\": \"686a7118a17f55079e675968\",\n            \"customer\": \" user test 1\",\n            \"description\": \"Test 1\",\n            \"status\": \"Open\",\n            \"resolution\": \"\",\n            \"removed\": false,\n            \"createdBy\": {\n                \"_id\": \"68680b42e53299558cb696f8\",\n                \"name\": \"IDURAR\"\n            },\n            \"notes\": [],\n            \"createdAt\": \"2025-07-06T12:50:32.707Z\",\n            \"updatedAt\": \"2025-07-06T12:50:32.707Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"686a6e7f0faa053eb0903675\",\n            \"customer\": \"John Doe\",\n            \"description\": \"Issue with product delivery\",\n            \"status\": \"Open\",\n            \"resolution\": \"\",\n            \"removed\": false,\n            \"createdBy\": {\n                \"_id\": \"68680b42e53299558cb696f8\",\n                \"name\": \"IDURAR\"\n            },\n            \"notes\": [\n                {\n                    \"content\": \"Followed up with the customer.\",\n                    \"date\": \"2025-07-06T12:40:58.291Z\",\n                    \"_id\": \"686a6eda0faa053eb090368b\"\n                }\n            ],\n            \"createdAt\": \"2025-07-06T12:39:27.257Z\",\n            \"updatedAt\": \"2025-07-06T12:40:58.292Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"686a6e540faa053eb090365d\",\n            \"customer\": \"John Doe\",\n            \"description\": \"Issue with product delivery\",\n            \"status\": \"Open\",\n            \"resolution\": \"\",\n            \"removed\": false,\n            \"createdBy\": {\n                \"_id\": \"68680b42e53299558cb696f8\",\n                \"name\": \"IDURAR\"\n            },\n            \"notes\": [],\n            \"createdAt\": \"2025-07-06T12:38:44.832Z\",\n            \"updatedAt\": \"2025-07-06T12:38:44.832Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"686a2c4d0faa053eb0903657\",\n            \"customer\": \"John Doe\",\n            \"description\": \"Issue with product delivery\",\n            \"status\": \"Open\",\n            \"resolution\": \"\",\n            \"removed\": false,\n            \"createdBy\": {\n                \"_id\": \"68680b42e53299558cb696f8\",\n                \"name\": \"IDURAR\"\n            },\n            \"notes\": [],\n            \"createdAt\": \"2025-07-06T07:57:01.903Z\",\n            \"updatedAt\": \"2025-07-06T07:57:01.903Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"pages\": 1,\n        \"count\": 4\n    },\n    \"message\": \"Successfully fetched query list\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Query",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"customer\": \" user test 1\",\r\n  \"description\": \"Test 1\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/query/create",
+              "host": ["{{baseURL}}"],
+              "path": ["api", "query", "create"]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Query",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{authToken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"customer\": \" user test 1\",\r\n  \"description\": \"Test 1\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/api/query/create",
+                  "host": ["{{baseURL}}"],
+                  "path": ["api", "query", "create"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "332"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"14c-Cmon7msw8YPZWVPARukBpHswyJU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 12:50:32 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": {\n        \"customer\": \" user test 1\",\n        \"description\": \"Test 1\",\n        \"status\": \"Open\",\n        \"resolution\": \"\",\n        \"removed\": false,\n        \"createdBy\": \"68680b42e53299558cb696f8\",\n        \"_id\": \"686a7118a17f55079e675968\",\n        \"notes\": [],\n        \"createdAt\": \"2025-07-06T12:50:32.707Z\",\n        \"updatedAt\": \"2025-07-06T12:50:32.707Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Query created successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "get query",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"customer\": \"John Doe\",\r\n  \"description\": \"Issue with product delivery\",\r\n  \"createdBy\": \"6868d4e86f9ccd02116e2760\" \r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/query/read/686a6e7f0faa053eb0903675",
+              "host": ["{{baseURL}}"],
+              "path": ["api", "query", "read", "686a6e7f0faa053eb0903675"]
+            }
+          },
+          "response": [
+            {
+              "name": "get query",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{authToken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"customer\": \"John Doe\",\r\n  \"description\": \"Issue with product delivery\",\r\n  \"createdBy\": \"6868d4e86f9ccd02116e2760\" \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/api/query/read/686a6e7f0faa053eb0903675",
+                  "host": ["{{baseURL}}"],
+                  "path": ["api", "query", "read", "686a6e7f0faa053eb0903675"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "460"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1cc-wGiokQshwpVbDiBDBtywhJW8Ddg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 14:52:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": {\n        \"_id\": \"686a6e7f0faa053eb0903675\",\n        \"customer\": \"John Doe\",\n        \"description\": \"Issue with product delivery\",\n        \"status\": \"Open\",\n        \"resolution\": \"\",\n        \"removed\": false,\n        \"createdBy\": \"68680b42e53299558cb696f8\",\n        \"notes\": [\n            {\n                \"content\": \"Followed up with the customer.\",\n                \"date\": \"2025-07-06T12:40:58.291Z\",\n                \"_id\": \"686a6eda0faa053eb090368b\"\n            }\n        ],\n        \"createdAt\": \"2025-07-06T12:39:27.257Z\",\n        \"updatedAt\": \"2025-07-06T12:40:58.292Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Query fetched successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "edit Query",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Closed\",\r\n  \"resolution\": \"Issue resolved by refund\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/query/update/686a6e7f0faa053eb0903675",
+              "host": ["{{baseURL}}"],
+              "path": ["api", "query", "update", "686a6e7f0faa053eb0903675"]
+            }
+          },
+          "response": [
+            {
+              "name": "edit Query",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{authToken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"Closed\",\r\n  \"resolution\": \"Issue resolved by refund\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/api/query/update/686a6e7f0faa053eb0903675",
+                  "host": ["{{baseURL}}"],
+                  "path": ["api", "query", "update", "686a6e7f0faa053eb0903675"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "486"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1e6-qFilAaBtevQiMH7aFUn5fgLIm3k\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 15:03:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": {\n        \"_id\": \"686a6e7f0faa053eb0903675\",\n        \"customer\": \"John Doe\",\n        \"description\": \"Issue with product delivery\",\n        \"status\": \"Closed\",\n        \"resolution\": \"Issue resolved by refund\",\n        \"removed\": false,\n        \"createdBy\": \"68680b42e53299558cb696f8\",\n        \"notes\": [\n            {\n                \"content\": \"Followed up with the customer.\",\n                \"date\": \"2025-07-06T12:40:58.291Z\",\n                \"_id\": \"686a6eda0faa053eb090368b\"\n            }\n        ],\n        \"createdAt\": \"2025-07-06T12:39:27.257Z\",\n        \"updatedAt\": \"2025-07-06T15:03:35.076Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Query updated successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add a note to the specified query",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"Followed up with the customer.\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/queries/686a7118a17f55079e675968/notes",
+              "host": ["{{baseURL}}"],
+              "path": ["api", "queries", "686a7118a17f55079e675968", "notes"]
+            }
+          },
+          "response": [
+            {
+              "name": "Add a note to the specified query",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{authToken}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"content\": \"Followed up with the customer.\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/api/queries/686a7118a17f55079e675968/notes",
+                  "host": ["{{baseURL}}"],
+                  "path": ["api", "queries", "686a7118a17f55079e675968", "notes"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "440"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1b8-XKE+VrbykkAslXKwl53LFIgfO2E\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 14:50:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": {\n        \"_id\": \"686a7118a17f55079e675968\",\n        \"customer\": \" user test 1\",\n        \"description\": \"Test 1\",\n        \"status\": \"Open\",\n        \"resolution\": \"\",\n        \"removed\": false,\n        \"createdBy\": \"68680b42e53299558cb696f8\",\n        \"notes\": [\n            {\n                \"content\": \"Followed up with the customer.\",\n                \"date\": \"2025-07-06T14:50:57.567Z\",\n                \"_id\": \"686a8d5110bf744074843515\"\n            }\n        ],\n        \"createdAt\": \"2025-07-06T12:50:32.707Z\",\n        \"updatedAt\": \"2025-07-06T14:50:57.567Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Note added successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Remove a note from a query",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/api/queries/686a7118a17f55079e675968/notes/686a8d5110bf744074843515",
+              "host": ["{{baseURL}}"],
+              "path": [
+                "api",
+                "queries",
+                "686a7118a17f55079e675968",
+                "notes",
+                "686a8d5110bf744074843515"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Remove a note from a query",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{authToken}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}/api/queries/686a7118a17f55079e675968/notes/686a8d5110bf744074843515",
+                  "host": ["{{baseURL}}"],
+                  "path": [
+                    "api",
+                    "queries",
+                    "686a7118a17f55079e675968",
+                    "notes",
+                    "686a8d5110bf744074843515"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "331"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"14b-rFEQLWHgiRWXDxHWGNK9S2XBdPo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 14:51:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": {\n        \"_id\": \"686a7118a17f55079e675968\",\n        \"customer\": \" user test 1\",\n        \"description\": \"Test 1\",\n        \"status\": \"Open\",\n        \"resolution\": \"\",\n        \"removed\": false,\n        \"createdBy\": \"68680b42e53299558cb696f8\",\n        \"notes\": [],\n        \"createdAt\": \"2025-07-06T12:50:32.707Z\",\n        \"updatedAt\": \"2025-07-06T14:51:53.443Z\",\n        \"__v\": 0\n    },\n    \"message\": \"Note removed successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjgwYjQyZTUzMjk5NTU4Y2I2OTZmOCIsImlhdCI6MTc1MTc4NjU2OCwiZXhwIjoxNzgzMzIyNTY4fQ.yf49dGUE8PkdPXNTQZOCTGO6yusQU4oENj7XrTcgUJE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin@demo.com\",\r\n    \"password\": \"admin123\",\r\n    \"remember\": true\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/login?timestamp=1751786037325",
+              "host": ["{{baseURL}}"],
+              "path": ["api", "login"],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "1751786037325"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjgwYjQyZTUzMjk5NTU4Y2I2OTZmOCIsImlhdCI6MTc1MTc4NjU2OCwiZXhwIjoxNzgzMzIyNTY4fQ.yf49dGUE8PkdPXNTQZOCTGO6yusQU4oENj7XrTcgUJE",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"admin@demo.com\",\r\n    \"password\": \"admin123\",\r\n    \"remember\": true\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}/api/login?timestamp=1751786037325",
+                  "host": ["{{baseURL}}"],
+                  "path": ["api", "login"],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "1751786037325"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin, Accept-Encoding"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "365"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"16d-wK68Dmj6zSxbX5a4zT6qwDJ/AoY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 06 Jul 2025 07:28:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"result\": {\n        \"_id\": \"68680b42e53299558cb696f8\",\n        \"name\": \"IDURAR\",\n        \"surname\": \"Admin\",\n        \"role\": \"owner\",\n        \"email\": \"admin@demo.com\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjgwYjQyZTUzMjk5NTU4Y2I2OTZmOCIsImlhdCI6MTc1MTc4NjkxOSwiZXhwIjoxNzgzMzIyOTE5fQ.YsYd8-sk3cDexKL8vK32BfoAG2kamIo0N9Y_O8Mn6L4\",\n        \"maxAge\": 365\n    },\n    \"message\": \"Successfully login user\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "id",
+      "value": "1"
+    },
+    {
+      "key": "base_url",
+      "value": "https://postman-rest-api-learner.glitch.me/"
+    }
+  ]
+}
