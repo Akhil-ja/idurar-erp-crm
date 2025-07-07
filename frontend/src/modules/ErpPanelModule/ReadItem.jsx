@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Divider } from 'antd';
+import invoiceRequest from '@/request/invoice';
 
-import { Button, Row, Col, Descriptions, Statistic, Tag } from 'antd';
+import { Button, Row, Col, Descriptions, Statistic, Tag, Spin } from 'antd';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
   EditOutlined,
@@ -9,6 +10,7 @@ import {
   CloseCircleOutlined,
   RetweetOutlined,
   MailOutlined,
+  RobotOutlined,
 } from '@ant-design/icons';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -100,6 +102,25 @@ export default function ReadItem({ config, selectedItem }) {
   const [currentErp, setCurrentErp] = useState(selectedItem ?? resetErp);
   const [client, setClient] = useState({});
 
+  const [summary, setSummary] = useState(null);
+  const [isSummarizing, setIsSummarizing] = useState(false);
+
+  const handleGenerateSummary = async () => {
+    setIsSummarizing(true);
+    try {
+      const response = await invoiceRequest.summarizeNotes(currentErp._id);
+      if (response.success) {
+        setSummary(response.result);
+      } else {
+        setSummary('Error generating summary.');
+      }
+    } catch (error) {
+      setSummary('Error generating summary.');
+    } finally {
+      setIsSummarizing(false);
+    }
+  };
+
   useEffect(() => {
     if (currentResult) {
       const { items, invoice, ...others } = currentResult;
@@ -115,6 +136,7 @@ export default function ReadItem({ config, selectedItem }) {
     return () => {
       setItemsList([]);
       setCurrentErp(resetErp);
+      setSummary(null); // Clear summary on unmount/data change
     };
   }, [currentResult]);
 
@@ -185,6 +207,14 @@ export default function ReadItem({ config, selectedItem }) {
 
           <Button
             key={`${uniqueId()}`}
+            onClick={handleGenerateSummary}
+            icon={<RobotOutlined />}
+            loading={isSummarizing}
+          >
+            {translate('Generate Summary')}
+          </Button>,
+          <Button
+            key={`${uniqueId()}`}
             onClick={() => {
               dispatch(
                 erp.currentAction({
@@ -235,6 +265,13 @@ export default function ReadItem({ config, selectedItem }) {
           />
         </Row>
       </PageHeader>
+      {summary && (
+        <Descriptions title={translate('Notes Summary')} bordered>
+          <Descriptions.Item>
+            <Spin spinning={isSummarizing}>{summary}</Spin>
+          </Descriptions.Item>
+        </Descriptions>
+      )}
       <Divider dashed />
       <Descriptions title={`Client : ${currentErp.client.name}`}>
         <Descriptions.Item label={translate('Address')}>{client.address}</Descriptions.Item>

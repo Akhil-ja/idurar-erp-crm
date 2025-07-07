@@ -6,6 +6,7 @@ const { listAllSettings, loadSettings } = require('@/middlewares/settings');
 const { getData } = require('@/middlewares/serverData');
 const useLanguage = require('@/locale/useLanguage');
 const { useMoney, useDate } = require('@/settings');
+const invoiceController = require('@/controllers/appControllers/invoiceController');
 
 const pugFiles = ['invoice', 'offer', 'quote', 'payment'];
 
@@ -29,7 +30,27 @@ exports.generatePdf = async (
     // render pdf html
 
     if (pugFiles.includes(modelName.toLowerCase())) {
-      // Compile Pug template
+        let summary = '';
+        if (modelName.toLowerCase() === 'invoice') {
+          // Mock req and res objects for summarizeNotes controller
+          const mockReq = { params: { id: result._id } };
+          const mockRes = {
+            status: function(code) {
+              return this;
+            },
+            json: function(data) {
+              return data;
+            }
+          };
+          const summaryResponse = await invoiceController.summarizeNotes(mockReq, mockRes);
+          if (summaryResponse.success) {
+            summary = summaryResponse.result;
+          } else {
+            summary = 'Error generating summary for PDF.';
+          }
+        }
+
+        // Compile Pug template
 
       const settings = await loadSettings();
       const selectedLang = settings['idurar_app_language'];
@@ -59,13 +80,14 @@ exports.generatePdf = async (
       settings.public_server_file = process.env.PUBLIC_SERVER_FILE;
 
       const htmlContent = pug.renderFile('src/pdf/' + modelName + '.pug', {
-        model: result,
-        settings,
-        translate,
-        dateFormat,
-        moneyFormatter,
-        moment: moment,
-      });
+          model: result,
+          settings,
+          translate,
+          dateFormat,
+          moneyFormatter,
+          moment: moment,
+          summary: summary, // Pass summary to Pug template
+        });
 
       pdf
         .create(htmlContent, {

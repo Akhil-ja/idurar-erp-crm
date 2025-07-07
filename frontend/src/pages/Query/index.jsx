@@ -31,7 +31,8 @@ export default function Query() {
       title: translate('Status'),
       dataIndex: 'status',
       render: (status) => {
-        return <Tag color={tagColor(status)}>{status}</Tag>;
+        const colorObject = tagColor(status);
+        return <Tag color={colorObject.color}>{status}</Tag>;
       },
     },
     {
