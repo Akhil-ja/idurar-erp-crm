@@ -75,6 +75,11 @@ export default function ItemRow({ field, remove, current = null }) {
           <Input placeholder="description Name" />
         </Form.Item>
       </Col>
+      <Col className="gutter-row" span={24}> {/* Span 24 to make it a full-width row */}
+        <Form.Item name={[field.name, 'notes']}>
+          <Input.TextArea rows={2} placeholder="Notes" />
+        </Form.Item>
+      </Col>
       <Col className="gutter-row" span={3}>
         <Form.Item name={[field.name, 'quantity']} rules={[{ required: true }]}>
           <InputNumber style={{ width: '100%' }} min={0} onChange={updateQt} />

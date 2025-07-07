@@ -33,6 +33,7 @@ const Item = ({ item, currentErp }) => {
           <strong>{item.itemName}</strong>
         </p>
         <p>{item.description}</p>
+        {item.notes && <p>Notes: {item.notes}</p>}
       </Col>
       <Col className="gutter-row" span={4}>
         <p
@@ -240,6 +241,11 @@ export default function ReadItem({ config, selectedItem }) {
         <Descriptions.Item label={translate('email')}>{client.email}</Descriptions.Item>
         <Descriptions.Item label={translate('Phone')}>{client.phone}</Descriptions.Item>
       </Descriptions>
+      {currentErp.notes && (
+        <Descriptions title={translate('Notes')} bordered>
+          <Descriptions.Item>{currentErp.notes}</Descriptions.Item>
+        </Descriptions>
+      )}
       <Divider />
       <Row gutter={[12, 0]}>
         <Col className="gutter-row" span={11}>
