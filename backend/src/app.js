@@ -2,6 +2,7 @@ const express = require('express');
 
 const cors = require('cors');
 const compression = require('compression');
+const morgan = require('morgan');
 
 const cookieParser = require('cookie-parser');
 
@@ -30,6 +31,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(compression());
+if (process.env.NODE_ENV === 'production') {
+  app.use(morgan('tiny'));
+}
 
 // // default options
 // app.use(fileUpload());
