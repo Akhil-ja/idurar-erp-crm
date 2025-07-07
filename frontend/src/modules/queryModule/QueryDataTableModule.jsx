@@ -9,13 +9,7 @@ export default function QueryDataTableModule({ config }) {
     <ErpLayout>
       <ErpPanel
         config={config}
-        extra={[
-          {
-            label: translate('Add Note'),
-            key: 'addNote',
-            icon: <ContainerOutlined />,
-          },
-        ]}
+        extra={[]}
       ></ErpPanel>
     </ErpLayout>
   );

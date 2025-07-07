@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { Button, Row, Col, Descriptions, Statistic, Tag } from 'antd';
 import { PageHeader } from '@ant-design/pro-layout';
-import { EditOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { EditOutlined, CloseCircleOutlined, FilePdfOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import useLanguage from '@/locale/useLanguage';
 import { erp } from '@/redux/erp/actions';
@@ -45,6 +45,13 @@ export default function ReadQueryItem({ config, selectedItem }) {
             icon={<CloseCircleOutlined />}
           >
             {translate('Close')}
+          </Button>,
+          <Button
+            key="pdf"
+            onClick={() => window.open(`/download/${entity}/${currentQuery._id}`, '_blank')}
+            icon={<FilePdfOutlined />}
+          >
+            {translate('Download PDF')}
           </Button>,
           <Button
             key="edit"
