@@ -30,4 +30,8 @@ routesList.forEach(({ entity, controllerName }) => {
   routerApp(entity, controller);
 });
 
+const queryController = appControllers['queryController'];
+router.post('/query/:id/notes', catchErrors(queryController.addNote));
+router.delete('/query/:id/notes/:noteId', catchErrors(queryController.removeNote));
+
 module.exports = router;
