@@ -11,7 +11,9 @@
     "production": "NODE_ENV=production",
     "setup": "node src/setup/setup.js",
     "upgrade": "node src/setup/upgrade.js",
-    "reset": "node src/setup/reset.js"
+    "reset": "node src/setup/reset.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.509.0",
@@ -33,6 +35,7 @@
     "moment": "^2.30.1",
     "mongoose": "^8.1.1",
     "mongoose-autopopulate": "^1.1.0",
+    "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "node-cache": "^5.1.2",
     "openai": "^4.27.0",
@@ -42,7 +45,13 @@
     "transliteration": "^2.3.5"
   },
   "devDependencies": {
-    "nodemon": "3.0.1"
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "nodemon": "3.0.1",
+    "prettier": "^3.6.2"
   },
   "_moduleAliases": {
     "@": "src"
