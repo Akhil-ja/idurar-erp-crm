@@ -450,6 +450,11 @@ const lang = {
   offers: 'Offers',
   proforma_invoices: 'quote',
   search: 'search',
+  query: 'Query',
+  queries: 'Queries',
+  query_list: 'Query List',
+  add_new_query: 'Add New Query',
+  replies: 'replies',
 };
 
 export default lang;
