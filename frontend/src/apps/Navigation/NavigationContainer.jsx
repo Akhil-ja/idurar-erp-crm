@@ -75,6 +75,11 @@ function Sidebar({ collapsible, isMobile = false }) {
       icon: <CreditCardOutlined />,
       label: <Link to={'/payment'}>{translate('payments')}</Link>,
     },
+    {
+      key: 'query',
+      icon: <ContainerOutlined />,
+      label: <Link to={'/query'}>{translate('queries')}</Link>,
+    },
 
     {
       key: 'paymentMode',
