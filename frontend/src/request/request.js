@@ -99,10 +99,10 @@ const request = {
     }
   },
 
-  delete: async ({ entity }) => {
+  delete: async ({ entity, id }) => {
     try {
       includeToken();
-      const response = await axios.delete(entity);
+      const response = await axios.delete(entity + '/' + id);
       successHandler(response, {
         notifyOnSuccess: true,
         notifyOnFailed: true,

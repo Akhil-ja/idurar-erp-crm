@@ -120,16 +120,15 @@ export default function AutoCompleteAsync({
       defaultActiveFirstOption={false}
       filterOption={false}
       notFoundContent={searching ? '... Searching' : <Empty />}
-      value={currentValue}
       onSearch={onSearch}
       onClear={() => {
-        // setOptions([]);
-        // setCurrentValue(undefined);
+        setOptions([]);
+        setCurrentValue(undefined);
         setSearching(false);
       }}
       onChange={handleSelectChange}
       style={{ minWidth: '220px' }}
-      // onSelect={handleOnSelect}
+      value={currentValue}
     >
       {selectOptions.map((optionField) => (
         <Select.Option
