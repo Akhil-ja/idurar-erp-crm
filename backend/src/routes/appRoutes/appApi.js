@@ -30,6 +30,9 @@ routesList.forEach(({ entity, controllerName }) => {
   routerApp(entity, controller);
 });
 
+const invoiceController = appControllers['invoiceController'];
+router.route('/invoice/summarize-notes/:id').get(catchErrors(invoiceController.summarizeNotes));
+
 const queryController = appControllers['queryController'];
 router.post('/query/:id/notes', catchErrors(queryController.addNote));
 router.delete('/query/:id/notes/:noteId', catchErrors(queryController.removeNote));

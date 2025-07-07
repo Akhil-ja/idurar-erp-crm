@@ -455,6 +455,8 @@ const lang = {
   query_list: 'Query List',
   add_new_query: 'Add New Query',
   replies: 'replies',
+  generate_summary: 'Generate Summary',
+  notes_summary: 'Notes Summary',
 };
 
 export default lang;
