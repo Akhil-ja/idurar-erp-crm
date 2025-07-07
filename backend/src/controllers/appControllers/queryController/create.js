@@ -3,7 +3,7 @@ const schema = require('./schemaValidate');
 const Model = mongoose.model('Query');
 
 const create = async (req, res) => {
-  const { error, value } = schema.validate(req.body);
+  const { error, value } = schema.createSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ success: false, message: error.details[0].message });
   }
